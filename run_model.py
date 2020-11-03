@@ -66,11 +66,12 @@ def generate_image(dense_class_vector=None, name=None, noise_seed_vector=None, t
     return output
 
 
-def print_image(numpy_array):
+def print_image(numpy_array, legend):
     """ Utility function to print a numpy uint8 array as an image
     """
     img = Image.fromarray(numpy_array)
     plt.imshow(img)
+    plt.title(legend)
     plt.show()
 
 
@@ -111,4 +112,4 @@ def text_to_image(text, mapping_model,
                                  pretrained_gan_model_name=pretrained_gan_model_name,
                                  truncation=truncation,
                                  noise_seed_vector=tokens if noise_seed is None else noise_seed)
-    print_image(numpy_image)
+    print_image(numpy_image, text)
